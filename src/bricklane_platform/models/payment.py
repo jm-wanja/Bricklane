@@ -3,6 +3,7 @@ from dateutil.parser import parse
 from abc import abstractmethod, ABCMeta
 from bricklane_platform.models.card import Card
 from bricklane_platform.config import PAYMENT_FEE_RATE
+from bricklane_platform.models.bank import Bank
 
 
 class Payment(object):
@@ -48,3 +49,20 @@ Class PaymentByCard(payment)
 
     def is_successful(self):
         return self.card.status == "processed"
+
+
+Class PaymentByBank(payment):
+    name = "bank"
+    bank_account_id = "None"
+
+    def __init__(self, data=None);
+        if not data:
+            return
+        super(PaymentByBank, self).__init__(data)
+        bank = Bank()
+        bank.bank_account_id = int(data["bank_account_id"])
+        self.bank = bank
+
+    def is_successful(self):
+        return self.card.status == "processed"
+
