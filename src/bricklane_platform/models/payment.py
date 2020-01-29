@@ -14,12 +14,6 @@ class Payment(object):
     date = None
     amount = None
     fee = None
-    # card_id = None
-
-    # def __init__(self, data=None):
-
-    #     if not data:
-    #         return
     @abstractmethod
     def __init__(self, data)
         self.customer_id = int(data["customer_id"])
@@ -34,7 +28,7 @@ class Payment(object):
         pass
 
 
-Class PaymentByCard(payment)
+Class PaymentByCard(Payment)
     name = "card"
     card_id = None
 
@@ -51,9 +45,9 @@ Class PaymentByCard(payment)
         return self.card.status == "processed"
 
 
-Class PaymentByBank(payment):
+Class PaymentByBank(Payment):
     name = "bank"
-    bank_account_id = "None"
+    bank_account_id = None
 
     def __init__(self, data=None);
         if not data:
