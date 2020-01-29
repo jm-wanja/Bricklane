@@ -1,4 +1,4 @@
 class Bank(object):
 
-    bank_id = None
+    bank_account_id = None
     status = None
