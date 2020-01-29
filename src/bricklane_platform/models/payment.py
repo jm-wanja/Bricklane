@@ -1,5 +1,6 @@
 from decimal import Decimal
 from dateutil.parser import parse
+
 from abc import abstractmethod, ABCMeta
 from bricklane_platform.models.card import Card
 from bricklane_platform.config import PAYMENT_FEE_RATE
@@ -14,8 +15,9 @@ class Payment(object):
     date = None
     amount = None
     fee = None
+
     @abstractmethod
-    def __init__(self, data)
+    def __init__(self, data):
         self.customer_id = int(data["customer_id"])
         self.date = parse(data["date"])
 
@@ -28,11 +30,11 @@ class Payment(object):
         pass
 
 
-Class PaymentByCard(Payment)
+class PaymentByCard(Payment):
     name = "card"
     card_id = None
 
-    def __init__(self, data=None);
+    def __init__(self, data=None):
         if not data:
             return
         super(PaymentByCard, self).__init__(data)
@@ -45,11 +47,11 @@ Class PaymentByCard(Payment)
         return self.card.status == "processed"
 
 
-Class PaymentByBank(Payment):
+class PaymentByBank(Payment):
     name = "bank"
     bank_account_id = None
 
-    def __init__(self, data=None);
+    def __init__(self, data=None):
         if not data:
             return
         super(PaymentByBank, self).__init__(data)
@@ -58,5 +60,5 @@ Class PaymentByBank(Payment):
         self.bank = bank
 
     def is_successful(self):
-        return self.card.status == "processed"
+        return True
 
