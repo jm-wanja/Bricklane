@@ -88,8 +88,8 @@ class TestPaymentByBank(unittest.TestCase):
 
         self.assertEqual(payment.customer_id, 111)
         self.assertEqual(payment.date, datetime(2019, 6, 30))
-        self.assertEqual(payment.amount, 98)
-        self.assertEqual(payment.fee, 2)
+        self.assertEqual(payment.amount, 147)
+        self.assertEqual(payment.fee, 3)
 
         bank = payment.bank
 

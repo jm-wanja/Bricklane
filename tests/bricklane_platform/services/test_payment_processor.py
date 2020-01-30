@@ -3,11 +3,11 @@ from ..fixture import get_path
 
 
 from bricklane_platform.services.payment_processor import PaymentProcessor
-from bricklane_platform.models.payment import Payment
+from bricklane_platform.models.payment import PaymentByCard
 
 
 def create_stub_payment(mock_is_successful):
-    payment = Payment()
+    payment = PaymentByCard()
     payment.is_successful = lambda: mock_is_successful
     return payment
 
